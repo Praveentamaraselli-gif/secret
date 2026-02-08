@@ -1,0 +1,678 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <title>For kuttyyy ❤️</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif;
+            -webkit-tap-highlight-color: transparent;
+        }
+        
+        html {
+            height: 100%;
+            overflow-x: hidden;
+        }
+        
+        body {
+            background: linear-gradient(135deg, #f9c5d1, #c2e9fb);
+            min-height: 100vh;
+            min-height: -webkit-fill-available;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 15px;
+            overflow-x: hidden;
+            touch-action: manipulation;
+        }
+        
+        .container {
+            max-width: 800px;
+            width: 100%;
+            background-color: rgba(255, 255, 255, 0.96);
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+            padding: 25px 20px;
+            text-align: center;
+            position: relative;
+            min-height: 500px;
+            -webkit-overflow-scrolling: touch;
+        }
+        
+        h1 {
+            color: #e91e63;
+            margin-bottom: 18px;
+            font-size: clamp(1.8rem, 6vw, 2.8rem);
+            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.1);
+            line-height: 1.2;
+            padding: 0 10px;
+        }
+        
+        h2 {
+            color: #2196f3;
+            margin-bottom: 15px;
+            font-size: clamp(1.6rem, 5vw, 2.2rem);
+            line-height: 1.2;
+            padding: 0 10px;
+        }
+        
+        .subtitle {
+            color: #555;
+            font-size: clamp(1rem, 3.5vw, 1.2rem);
+            margin-bottom: 25px;
+            line-height: 1.5;
+            padding: 0 10px;
+        }
+        
+        .page {
+            display: none;
+            animation: fadeIn 0.6s ease;
+        }
+        
+        .page.active {
+            display: block;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(15px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .buttons {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin-top: 35px;
+            flex-wrap: wrap;
+        }
+        
+        .btn {
+            padding: 18px 35px;
+            font-size: clamp(1.1rem, 4vw, 1.3rem);
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-weight: 600;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            min-width: 140px;
+            width: 100%;
+            max-width: 250px;
+            touch-action: manipulation;
+            -webkit-user-select: none;
+            user-select: none;
+            position: relative;
+        }
+        
+        /* Make buttons easier to tap on mobile */
+        .btn:active {
+            transform: scale(0.97);
+        }
+        
+        .yes-btn {
+            background: linear-gradient(to right, #4CAF50, #2E7D32);
+            color: white;
+        }
+        
+        .yes-btn:hover, .yes-btn:focus {
+            background: linear-gradient(to right, #3d8b40, #1B5E20);
+            transform: scale(1.03);
+        }
+        
+        .no-btn {
+            background: linear-gradient(to right, #f44336, #c62828);
+            color: white;
+        }
+        
+        .no-btn:hover, .no-btn:focus {
+            background: linear-gradient(to right, #d32f2f, #b71c1c);
+            transform: scale(1.03);
+        }
+        
+        .heart-btn {
+            background: linear-gradient(to right, #e91e63, #c2185b);
+            color: white;
+        }
+        
+        .heart-btn:hover, .heart-btn:focus {
+            background: linear-gradient(to right, #d81b60, #ad1457);
+            transform: scale(1.03);
+        }
+        
+        .message {
+            background-color: #ffebee;
+            padding: 18px;
+            border-radius: 15px;
+            margin: 22px auto;
+            font-size: clamp(1.1rem, 4vw, 1.4rem);
+            color: #c62828;
+            font-weight: 500;
+            display: none;
+            animation: pulse 2s infinite;
+            max-width: 90%;
+            border-left: 5px solid #e91e63;
+        }
+        
+        @keyframes pulse {
+            0% { box-shadow: 0 0 0 0 rgba(229, 115, 115, 0.5); }
+            70% { box-shadow: 0 0 0 8px rgba(229, 115, 115, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(229, 115, 115, 0); }
+        }
+        
+        .image-container {
+            margin: 25px auto;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+            max-width: 95%;
+        }
+        
+        .image-container img {
+            width: 100%;
+            height: auto;
+            max-height: 280px;
+            object-fit: cover;
+            display: block;
+        }
+        
+        .proposal-text {
+            font-size: clamp(1.1rem, 3.8vw, 1.5rem);
+            color: #333;
+            line-height: 1.6;
+            margin: 20px 0;
+            padding: 0 15px;
+            text-align: left;
+        }
+        
+        .proposal-text:first-letter {
+            font-size: 1.8em;
+            color: #e91e63;
+            font-weight: bold;
+            float: left;
+            line-height: 1;
+            margin-right: 5px;
+        }
+        
+        .final-message {
+            font-size: clamp(1.8rem, 7vw, 2.5rem);
+            color: #e91e63;
+            margin: 35px 0;
+            font-weight: 700;
+            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.1);
+            animation: bounce 1.5s infinite;
+            padding: 0 15px;
+        }
+        
+        @keyframes bounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-8px); }
+        }
+        
+        .hearts {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 0;
+        }
+        
+        .heart {
+            position: absolute;
+            color: #ff4081;
+            font-size: 22px;
+            opacity: 0;
+            animation: float 6s linear infinite;
+            z-index: 0;
+        }
+        
+        @keyframes float {
+            0% {
+                top: 100%;
+                opacity: 0;
+                transform: translateX(0) rotate(0deg);
+            }
+            10% {
+                opacity: 0.8;
+            }
+            90% {
+                opacity: 0.8;
+            }
+            100% {
+                top: -10%;
+                opacity: 0;
+                transform: translateX(20px) rotate(360deg);
+            }
+        }
+        
+        .footer {
+            margin-top: 30px;
+            color: #777;
+            font-size: clamp(0.8rem, 2.5vw, 0.9rem);
+            padding: 0 10px;
+        }
+        
+        /* Mobile-specific optimizations */
+        @media (max-width: 768px) {
+            body {
+                padding: 10px;
+                align-items: flex-start;
+                padding-top: 20px;
+                min-height: 100vh;
+                min-height: -webkit-fill-available;
+            }
+            
+            .container {
+                padding: 20px 15px;
+                min-height: auto;
+                margin-top: 0;
+            }
+            
+            .buttons {
+                gap: 15px;
+                margin-top: 30px;
+            }
+            
+            .btn {
+                padding: 16px 30px;
+                min-width: 130px;
+                max-width: 100%;
+            }
+            
+            .message {
+                padding: 15px;
+                margin: 18px auto;
+            }
+            
+            .image-container {
+                margin: 20px auto;
+            }
+            
+            .image-container img {
+                max-height: 220px;
+            }
+        }
+        
+        @media (max-width: 576px) {
+            .container {
+                padding: 18px 12px;
+                border-radius: 18px;
+            }
+            
+            .buttons {
+                flex-direction: column;
+                align-items: center;
+                gap: 12px;
+            }
+            
+            .btn {
+                padding: 16px 25px;
+                font-size: 1.2rem;
+                max-width: 280px;
+            }
+            
+            h1 {
+                font-size: 2rem;
+                margin-bottom: 15px;
+            }
+            
+            h2 {
+                font-size: 1.7rem;
+            }
+            
+            .subtitle {
+                font-size: 1.1rem;
+                margin-bottom: 20px;
+            }
+            
+            .proposal-text {
+                font-size: 1.2rem;
+                line-height: 1.5;
+            }
+            
+            .image-container img {
+                max-height: 200px;
+            }
+            
+            .heart {
+                font-size: 18px;
+            }
+        }
+        
+        @media (max-width: 360px) {
+            .container {
+                padding: 15px 10px;
+            }
+            
+            h1 {
+                font-size: 1.8rem;
+            }
+            
+            h2 {
+                font-size: 1.5rem;
+            }
+            
+            .btn {
+                padding: 14px 20px;
+                font-size: 1.1rem;
+            }
+            
+            .image-container img {
+                max-height: 180px;
+            }
+        }
+        
+        /* Orientation-specific adjustments */
+        @media (max-height: 600px) and (orientation: landscape) {
+            body {
+                padding: 5px;
+                align-items: flex-start;
+            }
+            
+            .container {
+                padding: 15px;
+                margin: 10px 0;
+            }
+            
+            h1 {
+                margin-bottom: 10px;
+                font-size: 1.8rem;
+            }
+            
+            .subtitle {
+                margin-bottom: 15px;
+                font-size: 1rem;
+            }
+            
+            .buttons {
+                margin-top: 20px;
+            }
+            
+            .btn {
+                padding: 12px 20px;
+                font-size: 1rem;
+            }
+            
+            .image-container {
+                margin: 15px auto;
+            }
+            
+            .image-container img {
+                max-height: 150px;
+            }
+            
+            .proposal-text {
+                margin: 12px 0;
+                font-size: 1rem;
+            }
+        }
+        
+        /* Prevent text size adjustment on orientation change */
+        html {
+            -webkit-text-size-adjust: 100%;
+            -ms-text-size-adjust: 100%;
+            text-size-adjust: 100%;
+        }
+        
+        /* Smooth scrolling for iOS */
+        .container {
+            -webkit-overflow-scrolling: touch;
+        }
+        
+        /* Fix for iOS button active state */
+        .btn {
+            -webkit-tap-highlight-color: rgba(0,0,0,0);
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="hearts" id="hearts-container"></div>
+        
+        <!-- Page 1: Initial Proposal -->
+        <div class="page active" id="page1">
+            <h1>💖 Proposal Day! 💖</h1>
+            <p class="subtitle">My Dear ammuluu, from the moment we met, you've brought endless joy and love into my life.</p>
+            <p class="subtitle">can i tell you something?</p>
+            
+            <div class="buttons">
+                <button class="btn yes-btn" id="initial-yes">YES!💝</button>
+                <button class="btn no-btn" id="initial-no">No </button>
+            </div>
+            
+            <div class="message" id="no-message">You have to click YES! ❤️</div>
+        </div>
+        
+        <!-- Page 2: Main Proposal -->
+        <div class="page" id="page2">
+            <h2>My Love For You 💕</h2>
+            <div class="image-container">
+                <img src="s and l.jpeg" 
+                     alt="Romantic sunset"
+                     loading="lazy">
+            </div>
+            
+            <p class="proposal-text">My Love, every day with you feels like a beautiful dream. Your smile lights up my world, your laughter is my favorite melody.</p>
+            <p class="proposal-text">I promise to cherish you, support you, and love you more with each passing day. Together, we can build a lifetime of beautiful memories.</p>
+            <p class="proposal-text">I dont know why we are fighting more than being happy.lets start this from beginning with no mistakes and less fights.Do you remember that three days after going to pavagadh how happy we are.I want that days for the life time.</p>
+            <p class="proposal-text">Will you give me that happy days for the rest of our lives?</p>
+            
+            <div class="buttons">
+                <button class="btn heart-btn" id="final-yes">Yes, I Will!</button>
+                <button class="btn no-btn" id="final-no">No, I Won't</button>
+            </div>
+            
+            <div class="message" id="please-message">Please, can you click yes? 🥺</div>
+        </div>
+        
+        <!-- Page 3: Final Yes Response -->
+        <div class="page" id="page3">
+            <div class="final-message">Thank You, Ammulu! 💖</div>
+        
+            
+            <p class="proposal-text">You've made me the happiest person in the world! 🥰</p>
+            <p class="proposal-text">I can't wait to start this beautiful journey with you. Our love story is just beginning, and I promise to make every chapter wonderful.</p>
+            <p class="proposal-text">I love you more than words can express, today and always. 💕</p>
+            <p class="proposal-text">I love you sooooooooo much bangarammm💖.</p>
+            <p class="proposal-text">ummaaaaaaaaaaaah ummaaaaaaaaaaaaaah ummaaaaaaaaaaaaaah ummaaaaaaaaaaaaaah umaaaaaaaaaaaah ummaaaaaaaaaaaaaaaaah ummaaaaaaaaaaaah ummaaaaaaaaaaaaaaaah ummaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaah kuttyyyyyy</p>
+            
+            <div class="buttons">
+                <button class="btn yes-btn" id="restart-btn">Start Over 💫</button>
+            </div>
+        </div>
+        
+        <div class="footer">
+            Made with 💖 for Ammulu on Proposal Day
+        </div>
+    </div>
+
+    <script>
+        // Create floating hearts
+        function createHearts() {
+            const heartsContainer = document.getElementById('hearts-container');
+            const colors = ['#ff4081', '#e91e63', '#f06292', '#ec407a'];
+            
+            // Adjust number of hearts based on screen size
+            const heartCount = window.innerWidth < 768 ? 10 : 15;
+            
+            for (let i = 0; i < heartCount; i++) {
+                const heart = document.createElement('div');
+                heart.className = 'heart';
+                heart.innerHTML = '❤';
+                heart.style.left = Math.random() * 100 + '%';
+                heart.style.fontSize = (Math.random() * 15 + 12) + 'px';
+                heart.style.color = colors[Math.floor(Math.random() * colors.length)];
+                heart.style.animationDelay = Math.random() * 5 + 's';
+                heart.style.animationDuration = (Math.random() * 4 + 5) + 's';
+                heartsContainer.appendChild(heart);
+            }
+        }
+        
+        // Page navigation functions
+        function showPage(pageId) {
+            document.querySelectorAll('.page').forEach(page => {
+                page.classList.remove('active');
+            });
+            document.getElementById(pageId).classList.add('active');
+            
+            // Scroll to top on page change (mobile friendly)
+            document.querySelector('.container').scrollTop = 0;
+        }
+        
+        // DOM elements
+        const initialYesBtn = document.getElementById('initial-yes');
+        const initialNoBtn = document.getElementById('initial-no');
+        const finalYesBtn = document.getElementById('final-yes');
+        const finalNoBtn = document.getElementById('final-no');
+        const restartBtn = document.getElementById('restart-btn');
+        const noMessage = document.getElementById('no-message');
+        const pleaseMessage = document.getElementById('please-message');
+        
+        // Function to move button (for "no" button interaction)
+        function moveButton(button) {
+            // Calculate safe area to keep button within screen bounds
+            const container = document.querySelector('.container');
+            const containerRect = container.getBoundingClientRect();
+            
+            // For mobile, limit movement more
+            const maxMovement = window.innerWidth < 768 ? 80 : 120;
+            
+            const randomX = Math.random() * maxMovement * 2 - maxMovement;
+            const randomY = Math.random() * maxMovement * 2 - maxMovement;
+            
+            // Apply the movement
+            button.style.transform = `translate(${randomX}px, ${randomY}px)`;
+            
+            // Reset after delay
+            setTimeout(() => {
+                button.style.transition = 'transform 0.5s ease';
+                button.style.transform = 'translate(0, 0)';
+                
+                // Remove transition after reset to avoid interfering with hover
+                setTimeout(() => {
+                    button.style.transition = '';
+                }, 500);
+            }, 300);
+        }
+        
+        // Event listeners with touch support
+        initialYesBtn.addEventListener('click', () => {
+            showPage('page2');
+        });
+        
+        initialYesBtn.addEventListener('touchend', (e) => {
+            e.preventDefault();
+            showPage('page2');
+        });
+        
+        initialNoBtn.addEventListener('click', () => {
+            noMessage.style.display = 'block';
+            setTimeout(() => {
+                noMessage.style.display = 'none';
+            }, 3000);
+            
+            moveButton(initialNoBtn);
+        });
+        
+        initialNoBtn.addEventListener('touchend', (e) => {
+            e.preventDefault();
+            noMessage.style.display = 'block';
+            setTimeout(() => {
+                noMessage.style.display = 'none';
+            }, 3000);
+            
+            moveButton(initialNoBtn);
+        });
+        
+        finalYesBtn.addEventListener('click', () => {
+            showPage('page3');
+            // Add more hearts when she says yes
+            createHearts();
+        });
+        
+        finalYesBtn.addEventListener('touchend', (e) => {
+            e.preventDefault();
+            showPage('page3');
+            createHearts();
+        });
+        
+        finalNoBtn.addEventListener('click', () => {
+            pleaseMessage.style.display = 'block';
+            setTimeout(() => {
+                pleaseMessage.style.display = 'none';
+            }, 3000);
+            
+            moveButton(finalNoBtn);
+        });
+        
+        finalNoBtn.addEventListener('touchend', (e) => {
+            e.preventDefault();
+            pleaseMessage.style.display = 'block';
+            setTimeout(() => {
+                pleaseMessage.style.display = 'none';
+            }, 3000);
+            
+            moveButton(finalNoBtn);
+        });
+        
+        restartBtn.addEventListener('click', () => {
+            showPage('page1');
+        });
+        
+        restartBtn.addEventListener('touchend', (e) => {
+            e.preventDefault();
+            showPage('page1');
+        });
+        
+        // Prevent context menu on buttons (for mobile long-press)
+        document.querySelectorAll('.btn').forEach(btn => {
+            btn.addEventListener('contextmenu', (e) => {
+                e.preventDefault();
+                return false;
+            });
+        });
+        
+        // Initialize the page
+        document.addEventListener('DOMContentLoaded', () => {
+            createHearts();
+            
+            // Fix for iOS 100vh issue
+            const setVh = () => {
+                const vh = window.innerHeight * 0.01;
+                document.documentElement.style.setProperty('--vh', `${vh}px`);
+            };
+            
+            setVh();
+            window.addEventListener('resize', setVh);
+            window.addEventListener('orientationchange', setVh);
+            
+            // Prevent zoom on double-tap (iOS)
+            let lastTouchEnd = 0;
+            document.addEventListener('touchend', (event) => {
+                const now = Date.now();
+                if (now - lastTouchEnd <= 300) {
+                    event.preventDefault();
+                }
+                lastTouchEnd = now;
+            }, false);
+        });
+        
+        // Handle orientation change
+        window.addEventListener('orientationchange', () => {
+            // Small delay to allow orientation to complete
+            setTimeout(() => {
+                document.querySelector('.container').scrollTop = 0;
+            }, 300);
+        });
+    </script>
+</body>
+</html>
